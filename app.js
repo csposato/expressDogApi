@@ -1,6 +1,12 @@
 const express = require("express");
 const bodyParser = require('body-parser');
 const fetch = require('node-fetch');
+const env = require('node-env-file');
+env('./.env');
+
+const PORT_IN = process.env.PORT_IN || '4000';
+const DOG_API_URL = process.env.DOG_API_URL || 'https://dog.ceo';
+const DOG_API_PATH = process.env.DOG_API_PATH || '/api/breeds/list/all';
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -22,7 +28,7 @@ let callOptions = {
     cache: 'default'
 };
 
-const url = 'https://dog.ceo/api/breeds/list/all';
+const url = DOG_API_URL + DOG_API_PATH;
 
 app.get('/', function(req, res) {
     respuesta = {
@@ -59,6 +65,6 @@ app.use(function(req, res, next) {
     res.status(404).send(respuesta);
 });
 
-app.listen(4000, () => {
-    console.log("El servidor está inicializado en el puerto 4000");
+app.listen(PORT_IN, () => {
+    console.log("El servidor está inicializado en el puerto: " + PORT_IN);
 });
