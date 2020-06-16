@@ -4,7 +4,7 @@ const fetch = require('node-fetch');
 const env = require('node-env-file');
 env('./.env');
 
-const PORT_IN = process.env.PORT_IN || '4000';
+const PORT_IN = process.env.PORT_IN || '8080';
 const DOG_API_URL = process.env.DOG_API_URL || 'https://dog.ceo';
 const DOG_API_PATH = process.env.DOG_API_PATH || '/api/breeds/list/all';
 
