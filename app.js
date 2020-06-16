@@ -2,11 +2,11 @@ const express = require("express");
 const bodyParser = require('body-parser');
 const fetch = require('node-fetch');
 const env = require('node-env-file');
-env('./.env');
+//env('./.env');
 
 const PORT_IN = process.env.PORT_IN || '8080';
-const DOG_API_URL = process.env.DOG_API_URL || 'undefined';
-const DOG_API_PATH = process.env.DOG_API_PATH || 'undefined';
+const DOG_API_URL = process.env.DOG_API_URL || 'https://dog.ceo';
+const DOG_API_PATH = process.env.DOG_API_PATH || '/api/breeds/list/all';
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
